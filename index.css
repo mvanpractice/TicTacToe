@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+
+body {
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f9f9f9;
+}
+
+/* Tic Tac Toe grid */
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+}
+
+/* Cells */
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Add borders only inside */
+.box:nth-child(1),
+.box:nth-child(2),
+.box:nth-child(3) {
+  border-bottom: 2px solid black;
+}
+.box:nth-child(4),
+.box:nth-child(5),
+.box:nth-child(6) {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+.box:nth-child(7),
+.box:nth-child(8),
+.box:nth-child(9) {
+  border-top: 2px solid black;
+}
+
+/* Vertical lines */
+.box:nth-child(1),
+.box:nth-child(4),
+.box:nth-child(7) {
+  border-right: 2px solid black;
+}
+.box:nth-child(3),
+.box:nth-child(6),
+.box:nth-child(9) {
+  border-left: 2px solid black;
+}
