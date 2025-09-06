@@ -28,6 +28,18 @@ body {
   cursor: pointer;
 }
 
+.box.human-winner {
+  background-color: rgb(7, 171, 59) !important; /* or any highlight color */
+  font-weight: bold !important;
+  color: white;
+}
+
+.box.ai-winner {
+  background-color: rgb(221, 13, 120) !important; /* or any highlight color */
+  font-weight: bold !important;
+  color: white;
+}
+
 /* Add borders only inside */
 .box:nth-child(1),
 .box:nth-child(2),
@@ -57,3 +69,5 @@ body {
 .box:nth-child(9) {
   border-left: 2px solid black;
 }
+
+

@@ -115,6 +115,58 @@ const controller = (function() {
             const aiMove = gameBoard.markAiMove();
             view.updateBoard(aiMove, AI_MOVE);
         }
+
+        const winner = checkWinner(gameBoard.getBoard());
+        
+        if (winner) {
+            endGame(winner);
+        }
+    }
+
+    function endGame(winner) {
+        console.log(winner);
+    }
+    
+    function highlightWinner(indices, winner) {
+        indices.forEach(index => {
+            const row = Math.floor(index / 3);
+            const col = index % 3;
+            const box = document.querySelector(`[data-row='${row}'][data-col='${col}']`);
+            
+            if (winner === 'X') {
+                box.classList.add('human-winner');
+            } else if (winner === 'O') {
+                box.classList.add('ai-winner');
+            }
+        });
+    }
+
+    function checkWinner(board) {
+        const flatBoard = board.flat();
+        const winCombo = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8],
+            [0, 3, 6], [1, 4, 7], [2, 5, 8],
+            [0, 4, 8], [2, 4, 6]
+        ];
+
+        for (const [a, b, c] of winCombo) {
+            if (flatBoard[a] 
+                && flatBoard[a] === flatBoard[b] 
+                && flatBoard[a] === flatBoard[c]) {
+                    highlightWinner([a, b, c], flatBoard[a]);
+
+                    container.removeEventListener('click', handleClick);
+
+                    return flatBoard[a];
+            }
+        }  
+        
+        if (!flatBoard.includes('')) {
+            container.removeEventListener('click', handleClick);
+            return 'draw';
+        }
+
+        return null;
     }
 
     return {
